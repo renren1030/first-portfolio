@@ -1,0 +1,25 @@
+<div class="container-fluid">
+<h2>新規タスク</h2>
+<% if @task.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @task.errors.count %>件のエラーがあります。</h2>
+    <ul>
+    <% @task.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for(@task) do |f| %>
+  <div><%= f.label :タスク名 %></div>
+  <div><%= f.text_field :name %></div>
+  <div><%= f.label :タスク内容 %></div>
+  <div><%= f.text_area :content ,class: "text"%></div>
+  <div><%= f.label :タスク画像 %></div>
+  <div><%= f.file_field :image ,class:"image_input_btn"%></div>
+  <div><%= f.submit :submit ,class:"btn"%></div>
+<% end %>
+<%= render partial: "users/btn-box" %>
+<%= link_to 'タスク一覧へ', tasks_path ,class:"slender"%><br>
+<%= link_to '戻る', :back ,class:"slender" %>
+</div>

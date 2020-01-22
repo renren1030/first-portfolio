@@ -1,0 +1,36 @@
+<div class="container-fluid2">
+<h2>タスク一覧</h2>
+<div class="content-row">
+<% @tasks.each do |task| %>
+<div class="content">
+  <div class="header-row">
+    <p class="username"><%= task.user.name%></p>
+    <p class="tasktime"><%= task.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+    <% if user_signed_in? && task.user_id == current_user.id %>
+    <div class="header-side">
+      <%= link_to '編集', edit_task_path(task) %>
+      <%= link_to '削除', task_path(task) ,method: :delete%>
+    </div>
+    <% end %>
+  </div>
+    <p><%= task.name %></p>
+    <%= image_tag task.image.to_s , :size =>'200x200', class:"taskimage"%>
+    <p class="taskcontent"><%= task.content %></p>
+      <% if user_signed_in? %>
+        <% if task.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
+        <p><span>お気に入り解除: </span><%=link_to task.favorites.count, task_favorites_path(task.id), method: :delete %></p>
+        <% else %>
+        <p><span>お気に入り登録: </span><%=link_to task.favorites.count, task_favorites_path(task.id), method: :post %></p>
+    <% end %>
+        <% else %>
+    <p><span>お気に入り数: </span><%= task.favorites.count %></p>
+   <% end %>
+</div>
+  <% end %>
+  </div>
+
+<%= render partial: "users/btn-box" %>
+<%= paginate(@tasks) %>
+
+
+

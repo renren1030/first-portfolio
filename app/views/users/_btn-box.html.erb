@@ -1,0 +1,13 @@
+<div class="btn-box1">
+<% if user_signed_in?%>
+  <%= link_to current_user.name, edit_user_registration_path(current_user)  ,class: 'useredit'%>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'post' %> <!-- ログアウトをする -->
+  <%# <%= link_to "ユーザー編集", user_path,class: 'post' %> 
+  <%= link_to "投稿する" , new_task_path ,class: 'post'%>
+<% else %>
+ <div class="btn-box2">
+    <%= link_to "新規登録", new_user_registration_path, class: 'post' %> <!-- 新規登録画面に移行する -->
+    <%= link_to "ログイン", new_user_session_path, class: 'post' %> <!-- ログイン画面に移行する -->
+</div>
+<% end %>
+</div>

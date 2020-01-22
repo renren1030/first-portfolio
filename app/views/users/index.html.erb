@@ -1,0 +1,17 @@
+<div class="container-fluid">
+<% if user_signed_in?%>
+<h2> 現在 <%= current_user.name %> さんがログインしています </h2> 
+<h4> メールアドレス:<%= current_user.email %> </h4>
+<%= link_to 'タスク一覧へ', tasks_path, class: "slender" %>
+<%= render partial: "btn-box" %>
+<% else %>
+  <!-- ユーザーがログインしていなかった時の処理 -->
+<h2> 現在ログインしていません </h2>
+  <div class="btn-box">
+    <%= link_to "新規登録", new_user_registration_path, class: 'post' %> <!-- 新規登録画面に移行する -->
+    <%= link_to "ログイン", new_user_session_path, class: 'post' %> <!-- ログイン画面に移行する -->
+  </div>
+  <%= link_to 'タスク一覧へ', tasks_path %>
+<% end %>
+</div>
+
