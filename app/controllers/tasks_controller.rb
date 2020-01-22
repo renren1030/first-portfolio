@@ -15,7 +15,7 @@ class TasksController < ApplicationController
     @task = Task.create(task_params)
     @task.user_id = current_user.id
     if @task.save
-      redirect_to create_tasks_path
+      redirect_to tasks_path
     else
       render action: :new
     end
