@@ -11,12 +11,12 @@
   </div>
 <% end %>
 <%= form_for(@task) do |f| %>
-  <div><%= f.label :name %></div>
+<div><%= f.label :タスク名 %></div>
   <div><%= f.text_field :name %></div>
-  <div><%= f.label :content %></div>
-  <div><%= f.text_field :content %></div>
-  <div><%= f.label :image %></div>
-  <div><%= f.file_field :image %></div>
+  <div><%= f.label :タスク内容 %></div>
+  <div><%= f.text_area :content ,class: "text"%></div>
+  <div><%= f.label :タスク画像 %></div>
+  <div><%= f.file_field :image ,class:"image_input_btn"%></div>
   <div><%= f.submit %></div>
 <% end %>
 <%= render partial: "users/btn-box" %>

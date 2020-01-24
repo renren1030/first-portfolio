@@ -17,7 +17,7 @@
   <div><%= f.text_area :content ,class: "text"%></div>
   <div><%= f.label :タスク画像 %></div>
   <div><%= f.file_field :image ,class:"image_input_btn"%></div>
-  <div><%= f.submit :submit ,class:"btn"%></div>
+  <div><%= f.submit :投稿する ,class:"btn"%></div>
 <% end %>
 <%= render partial: "users/btn-box" %>
 <%= link_to 'タスク一覧へ', tasks_path ,class:"slender"%><br>
